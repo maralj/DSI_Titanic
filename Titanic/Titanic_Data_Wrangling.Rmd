@@ -1,0 +1,46 @@
+---
+title: "Titanic"
+author: "MJ"
+date: "3/24/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(dplyr)
+library(tidyr)
+#PROBLEM 1
+#count mising values (NA) in each column.
+#Replacing blank rows with NA
+na <- read.csv("~/Desktop/My_Lovely_DS_Project/DSI_Titanic/titanic_original.csv", na.strings = "")
+na
+colSums(is.na(df))
+em <- na$embarked
+#Converting em from favtor to charachter 
+em <- as.character(em)
+#Replacing NA values with 'S'
+na$embarked[which(is.na(na$embarked))] <-"S"
+# updating the na$embarked df with the new embarked col.
+na <- df1
+df1[is.na(as.factor(df1$embarked)),]
+#testing
+colSums(is.na(df1))
+
+#PROBLEM 2
+age <- df$age
+class(age)
+df = transform(df1, age = ifelse(is.na(age), mean(age, na.rm=TRUE), age))
+#testing NA to mean conversion
+colSums(is.na(df))
+
+#PROBLEM 3
+#Already done on the fly when importing the csv file.
+head (df$boat, 100)
+
+#PROBLEM 4
+df = transform(df, has_cabin = ifelse(is.na(df$cabin), 0, 1))
+
+View(df)
+```
+
+
+
